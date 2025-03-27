@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Data.SQLite;
 using System.Security.Cryptography;
 using System.Text;
 using System.IO;
+using System.Collections.Generic;
 
 namespace AppNote
 {
@@ -103,6 +104,36 @@ namespace AppNote
         private static bool VerifyPassword(string password, string hash)
         {
             return HashPassword(password) == hash;
+        }
+
+        public static class ConfigReader
+        {
+            private static Dictionary<string, string> settings = new Dictionary<string, string>();
+
+            static ConfigReader()
+            {
+                LoadConfig("config.ini");
+            }
+
+            private static void LoadConfig(string filePath)
+            {
+                if (!File.Exists(filePath))
+                    throw new FileNotFoundException($"Plik konfiguracyjny {filePath} nie został znaleziony!");
+
+                foreach (var line in File.ReadAllLines(filePath))
+                {
+                    if (!string.IsNullOrWhiteSpace(line) && line.Contains("="))
+                    {
+                        var parts = line.Split('=', (char)2);
+                        settings[parts[0].Trim()] = parts[1].Trim();
+                    }
+                }
+            }
+
+            public static string GetSetting(string key)
+            {
+                return settings.ContainsKey(key) ? settings[key] : null;
+            }
         }
     }
 }
