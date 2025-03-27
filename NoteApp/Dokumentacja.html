@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumentacja aplikacji Notatki</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dokumentacja aplikacji Notatki</h1>
+    
+    <h2>1. Opis aplikacji</h2>
+    <p>Aplikacja Notatki to proste, ale funkcjonalne narzędzie do zarządzania notatkami. 
+    Pozwala użytkownikom na tworzenie, edytowanie, usuwanie oraz zapisywanie notatek do pliku. 
+    Dzięki zastosowaniu autoryzacji, każdy użytkownik ma dostęp tylko do swoich notatek.</p>
+
+    <h2>2. Wymagania systemowe</h2>
+    <ul>
+        <li>System operacyjny: Windows 10/11</li>
+        <li>Środowisko: .NET Framework 4.7 lub nowszy</li>
+        <li>IDE: Visual Studio 2022 lub nowsze</li>
+    </ul>
+
+    <h2>3. Instalacja i uruchomienie</h2>
+    <p>Aby uruchomić aplikację, należy wykonać poniższe kroki:</p>
+    <ol>
+        <li>Otwórz Visual Studio.</li>
+      <li>Otwórz projekt aplikacji</li>
+       
+        <li>Uruchom aplikację klikając „Start” w Visual Studio.</li>
+    </ol>
+
+    <h2>4. Funkcjonalność aplikacji</h2>
+    <ul>
+        <li><strong>Dodawanie nowej notatki:</strong> użytkownik może wpisać tytuł i treść, a następnie zapisać notatkę.</li>
+        <li><strong>Edytowanie notatki:</strong> wybranie istniejącej notatki pozwala na jej edycję.</li>
+        <li><strong>Usuwanie notatek:</strong> użytkownik może trwale usunąć wybraną notatkę.</li>
+        
+        <li><strong>Logowanie i rejestracja:</strong> użytkownik musi się zalogować, aby zobaczyć swoje notatki.</li>
+    </ul>
+
+    <h2>5. Obsługa aplikacji</h2>
+    <p>Interfejs aplikacji jest intuicyjny i składa się z kilku kluczowych elementów:</p>
+    <ul>
+        <li>Pole tekstowe do wpisania tytułu notatki.</li>
+        <li>Pole tekstowe do wpisania treści notatki.</li>
+        <li>Lista wyświetlająca zapisane notatki.</li>
+        <li>Przyciski: „Dodaj”, „Edytuj” oraz „Usuń” notatkę.</li>
+    </ul>
+    <p>Aby dodać notatkę, należy wypełnić pola i kliknąć „Dodaj”. Aby edytować, wystarczy wybrać notatkę z listy i kliknąć „Edytuj”.</p>
+
+    <h2>6. Struktura bazy danych</h2>
+    <p>Baza danych aplikacji składa się z dwóch tabel:</p>
+    <pre>
+Tabela Uzytkownicy:
+- ID (int, klucz główny)
+- Email (string, unikalny)
+- Haslo (string, hashowane)
+    
+Tabela Notatki:
+- ID (int, klucz główny)
+- Tytul (string)
+- Tresc (string)
+- DataDodania (datetime)
+- UzytkownikID (int, klucz obcy)</pre>
+    <p>Każda notatka jest przypisana do konkretnego użytkownika za pomocą identyfikatora UzytkownikID.</p>
+
+    <h2>7. Bezpieczeństwo i haszowanie haseł</h2>
+    <p>Hasła użytkowników są przechowywane w bazie danych w postaci zahaszowanej przy użyciu algorytmu SHA-256.
+    Dzięki temu nawet administrator bazy danych nie ma dostępu do rzeczywistych haseł użytkowników.</p>
+
+    <h2>8. Plik konfiguracyjny</h2>
+    <p>Parametry połączenia do bazy danych są przechowywane w pliku <code>config.ini</code>. 
+    Plik ten zawiera również inne ustawienia aplikacji, takie jak maksymalna liczba notatek czy lokalizacja plików zapisu.</p>
+
+
+
+    <h2>9. Autor</h2>
+    <p>Autor: Krystian Mazalewski</p>
+</body>
+</html>
